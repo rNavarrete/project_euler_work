@@ -1,0 +1,15 @@
+# Project Euler Question 10
+
+def sieve_of_eratosthenes_upto(n)
+  num_array = (0..n).to_a
+  num_array[0] = num_array[1] = nil
+  num_array.each do |num|
+    next unless num
+    break if num * num > n
+    (num*num).step(n, num) { |index| num_array[index] = nil }
+  end
+  num_array.compact
+end
+
+sieve_of_eratosthenes_upto(2000000).reduce(:+)
+
